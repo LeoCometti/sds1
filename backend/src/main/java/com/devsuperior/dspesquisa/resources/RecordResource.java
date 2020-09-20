@@ -1,7 +1,6 @@
 package com.devsuperior.dspesquisa.resources;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,9 +46,9 @@ public class RecordResource {
 		if (linesPerPage == 0) {
 			linesPerPage = Integer.MAX_VALUE;
 		}
-		
+
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		
+
 		Page<RecordDTO> list = service.findByMoments(minDate, maxDate, pageRequest);
 		return ResponseEntity.ok().body(list);
 	}
